@@ -1,0 +1,11 @@
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\bin\Debug\Nomina.exe.config
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\bin\Debug\Nomina.exe
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\bin\Debug\Nomina.pdb
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\obj\Debug\Nomina.csproj.AssemblyReference.cache
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\obj\Debug\Nomina.csproj.SuggestedBindingRedirects.cache
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\obj\Debug\Nomina.Form1.resources
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\obj\Debug\Nomina.Properties.Resources.resources
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\obj\Debug\Nomina.csproj.GenerateResource.cache
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\obj\Debug\Nomina.csproj.CoreCompileInputs.cache
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\obj\Debug\Nomina.exe
+C:\Users\oueil\Documents\GitHub\SeniorEpisodio1\AplicativoDesktop\Nomina\Nomina\obj\Debug\Nomina.pdb
