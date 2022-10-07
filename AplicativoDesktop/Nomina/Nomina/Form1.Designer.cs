@@ -55,11 +55,8 @@
             this.btnCancelarC = new System.Windows.Forms.Button();
             this.btnGuardarC = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
             this.cBoxCubrioTurnoC = new System.Windows.Forms.CheckBox();
-            this.txtCantidadEntregaC = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtFechaC = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtTipoC = new System.Windows.Forms.TextBox();
             this.txtRolC = new System.Windows.Forms.TextBox();
@@ -78,6 +75,9 @@
             this.rbtnCubrioExternoC = new System.Windows.Forms.RadioButton();
             this.rbtnCubrioInternoC = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtFechaC = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtCantidadEntregaC = new System.Windows.Forms.MaskedTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -200,9 +200,9 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(393, 24);
+            this.btnBuscar.Location = new System.Drawing.Point(411, 26);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(83, 28);
+            this.btnBuscar.Size = new System.Drawing.Size(68, 28);
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -214,7 +214,7 @@
             this.panel3.Controls.Add(this.rbtnExterno);
             this.panel3.Controls.Add(this.rbtnInterno);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(232, 99);
+            this.panel3.Location = new System.Drawing.Point(247, 99);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(158, 95);
             this.panel3.TabIndex = 5;
@@ -316,14 +316,15 @@
             this.txtNombre.Enabled = false;
             this.txtNombre.Location = new System.Drawing.Point(102, 61);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(288, 22);
+            this.txtNombre.Size = new System.Drawing.Size(303, 22);
             this.txtNombre.TabIndex = 3;
             // 
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(102, 29);
+            this.txtNumero.MaxLength = 20;
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(288, 22);
+            this.txtNumero.Size = new System.Drawing.Size(303, 22);
             this.txtNumero.TabIndex = 2;
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
@@ -387,13 +388,13 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.txtCantidadEntregaC);
+            this.panel4.Controls.Add(this.txtFechaC);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.cBoxCubrioTurnoC);
-            this.panel4.Controls.Add(this.txtCantidadEntregaC);
             this.panel4.Controls.Add(this.label11);
-            this.panel4.Controls.Add(this.txtFechaC);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.txtTipoC);
             this.panel4.Controls.Add(this.txtRolC);
@@ -410,19 +411,10 @@
             this.panel4.Size = new System.Drawing.Size(484, 287);
             this.panel4.TabIndex = 9;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(115, 146);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "dd/mm/aaaa";
-            // 
             // cBoxCubrioTurnoC
             // 
             this.cBoxCubrioTurnoC.AutoSize = true;
+            this.cBoxCubrioTurnoC.Enabled = false;
             this.cBoxCubrioTurnoC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBoxCubrioTurnoC.Location = new System.Drawing.Point(39, 171);
             this.cBoxCubrioTurnoC.Name = "cBoxCubrioTurnoC";
@@ -430,15 +422,6 @@
             this.cBoxCubrioTurnoC.TabIndex = 13;
             this.cBoxCubrioTurnoC.Text = "Cubrio turno";
             this.cBoxCubrioTurnoC.UseVisualStyleBackColor = true;
-            // 
-            // txtCantidadEntregaC
-            // 
-            this.txtCantidadEntregaC.Location = new System.Drawing.Point(374, 124);
-            this.txtCantidadEntregaC.Name = "txtCantidadEntregaC";
-            this.txtCantidadEntregaC.Size = new System.Drawing.Size(39, 22);
-            this.txtCantidadEntregaC.TabIndex = 12;
-            this.txtCantidadEntregaC.TextChanged += new System.EventHandler(this.txtCantidadEntregaC_TextChanged);
-            this.txtCantidadEntregaC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadEntregaC_KeyPress);
             // 
             // label11
             // 
@@ -449,14 +432,6 @@
             this.label11.Size = new System.Drawing.Size(148, 16);
             this.label11.TabIndex = 11;
             this.label11.Text = "Cantidad de entrega";
-            // 
-            // txtFechaC
-            // 
-            this.txtFechaC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFechaC.Location = new System.Drawing.Point(102, 121);
-            this.txtFechaC.Name = "txtFechaC";
-            this.txtFechaC.Size = new System.Drawing.Size(112, 22);
-            this.txtFechaC.TabIndex = 10;
             // 
             // label6
             // 
@@ -525,9 +500,11 @@
             // txtNumeroC
             // 
             this.txtNumeroC.Location = new System.Drawing.Point(102, 29);
+            this.txtNumeroC.MaxLength = 20;
             this.txtNumeroC.Name = "txtNumeroC";
             this.txtNumeroC.Size = new System.Drawing.Size(310, 22);
             this.txtNumeroC.TabIndex = 2;
+            this.txtNumeroC.TextChanged += new System.EventHandler(this.txtNumeroC_TextChanged);
             this.txtNumeroC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroC_KeyPress);
             // 
             // label9
@@ -599,7 +576,7 @@
             this.panel6.Controls.Add(this.rbtnCubrioExternoC);
             this.panel6.Controls.Add(this.rbtnCubrioInternoC);
             this.panel6.Controls.Add(this.label12);
-            this.panel6.Location = new System.Drawing.Point(232, 197);
+            this.panel6.Location = new System.Drawing.Point(254, 197);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(158, 69);
             this.panel6.TabIndex = 19;
@@ -637,6 +614,34 @@
             this.label12.Size = new System.Drawing.Size(43, 16);
             this.label12.TabIndex = 1;
             this.label12.Text = "Tipo:";
+            // 
+            // txtFechaC
+            // 
+            this.txtFechaC.Location = new System.Drawing.Point(102, 124);
+            this.txtFechaC.Mask = "00/00/0000";
+            this.txtFechaC.Name = "txtFechaC";
+            this.txtFechaC.Size = new System.Drawing.Size(100, 22);
+            this.txtFechaC.TabIndex = 20;
+            this.txtFechaC.ValidatingType = typeof(System.DateTime);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(99, 146);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "dd/mm/aaaa";
+            // 
+            // txtCantidadEntregaC
+            // 
+            this.txtCantidadEntregaC.Location = new System.Drawing.Point(373, 121);
+            this.txtCantidadEntregaC.Mask = "99";
+            this.txtCantidadEntregaC.Name = "txtCantidadEntregaC";
+            this.txtCantidadEntregaC.Size = new System.Drawing.Size(39, 22);
+            this.txtCantidadEntregaC.TabIndex = 21;
+            this.txtCantidadEntregaC.ValidatingType = typeof(int);
             // 
             // Form1
             // 
@@ -708,12 +713,9 @@
         private System.Windows.Forms.TextBox txtNumeroC;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtFechaC;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtCantidadEntregaC;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox cBoxCubrioTurnoC;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.RadioButton rbtnCubrioExternoC;
         private System.Windows.Forms.RadioButton rbtnCubrioInternoC;
@@ -722,6 +724,9 @@
         private System.Windows.Forms.RadioButton rbtnCargadorC;
         private System.Windows.Forms.RadioButton rbtnChoferC;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.MaskedTextBox txtFechaC;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.MaskedTextBox txtCantidadEntregaC;
     }
 }
 

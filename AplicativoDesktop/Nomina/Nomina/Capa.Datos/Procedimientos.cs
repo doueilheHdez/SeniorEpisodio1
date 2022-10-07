@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Runtime.CompilerServices;
 
 namespace Nomina.Capa.Datos
 {
@@ -13,25 +14,23 @@ namespace Nomina.Capa.Datos
         private SqlConnection conn;
         private SqlCommand command;
         private SqlDataAdapter da;
-        public DataSet getCarpetas()
+
+        public DataTable GetEmpleados(long Numero)
         {
-            string MSJReturn = String.Empty;
-            DataSet dt = new DataSet();
+            DataTable dtInformacion = new DataTable();
             try
             {
-                conn = new SqlConnection(connectionString);
-                command = new SqlCommand("sp_ListaDocumentosxDia", conn);
+                conn = new SqlConnection(Conexion.ConnectionString);
+                command = new SqlCommand("sp_GetEmpleados", conn);
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandTimeout = 600;
+                command.CommandTimeout = 60; 
                 command.Parameters.Clear();
+                command.Parameters.Add(new SqlParameter("@Numero", SqlDbType.BigInt)).Value = Numero;
                 da = new SqlDataAdapter(command);
-                da.Fill(dt);
+                da.Fill(dtInformacion);
             }
             catch (Exception ex)
             {
-                string _msj = DateTime.Now + "--> Error getCarpeta " + ex.Message;
-                logs lg = new logs();
-                lg.Escribir(_msj);
                 return null;
             }
             finally
@@ -42,54 +41,105 @@ namespace Nomina.Capa.Datos
                 command = null;
                 conn = null;
             }
-            return dt;
+            return dtInformacion;
         }
 
-        public bool setRegistro(int anio, int mes, int folioWM, int complemento, string archivo, string tipo,
-           long filesize, string hash, int paginas, string tipoDocumentoId, int nextsec, string CarpetaAzure, int Existe)
+        public bool SetEmpleados(long Numero, string Nombre, string Rol, string Tipo, string Movimiento)
         {
-            SqlConnection conn = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand();
-
             try
             {
-                command.CommandText = "sp_GMM_UploadFile_Azure";
+                SqlConnection conn = new SqlConnection(Conexion.ConnectionString);
+                SqlCommand command = new SqlCommand();
+
+                command.CommandText = "sp_SetEmpleados";
                 command.CommandType = CommandType.StoredProcedure;
+                command.CommandTimeout = 60;
                 command.Connection = conn;
                 command.Parameters.Clear();
-                command.Parameters.Add(new SqlParameter("@anio", SqlDbType.Int)).Value = anio;
-                command.Parameters.Add(new SqlParameter("@mes", SqlDbType.Int)).Value = mes;
-                command.Parameters.Add(new SqlParameter("@folioWM", SqlDbType.Int)).Value = folioWM;
-                command.Parameters.Add(new SqlParameter("@complemento", SqlDbType.Int)).Value = complemento;
-                command.Parameters.Add(new SqlParameter("@archivo", SqlDbType.NVarChar)).Value = archivo;
-                command.Parameters.Add(new SqlParameter("@tipo", SqlDbType.NVarChar)).Value = tipo;
-                command.Parameters.Add(new SqlParameter("@filesize", SqlDbType.BigInt)).Value = filesize;
-                command.Parameters.Add(new SqlParameter("@hash", SqlDbType.NVarChar)).Value = hash;
-                command.Parameters.Add(new SqlParameter("@paginas", SqlDbType.Int)).Value = paginas;
-                command.Parameters.Add(new SqlParameter("@tipoDocumentoId", SqlDbType.NVarChar)).Value = tipoDocumentoId;
-                command.Parameters.Add(new SqlParameter("@nextsec", SqlDbType.Int)).Value = nextsec;
-                command.Parameters.Add(new SqlParameter("@CarpetaAzure", SqlDbType.NVarChar)).Value = CarpetaAzure;
-                command.Parameters.Add(new SqlParameter("@Existe", SqlDbType.Int)).Value = Existe;
-                command.CommandTimeout = 120;
+                command.Parameters.Add(new SqlParameter("@Numero", SqlDbType.BigInt)).Value = Numero;
+                command.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.NVarChar)).Value = Nombre;
+                command.Parameters.Add(new SqlParameter("@Rol", SqlDbType.NVarChar)).Value = Rol;
+                command.Parameters.Add(new SqlParameter("@Tipo", SqlDbType.NVarChar)).Value = Tipo;
+                command.Parameters.Add(new SqlParameter("@Movimento", SqlDbType.NVarChar)).Value = Movimiento;
+
                 conn.Open();
                 command.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
-                string _msj = DateTime.Now + "--> Error InsertRegistro(): " + Ex.Message;
-                logs lg = new logs();
-                lg.Escribir(_msj);
-
                 return false;
+            }
+            finally
+            {
+                command = null;
+                conn = null;
+            }
+            return true;
+        }
+
+        public bool SetCapturaMovimiento(long Numero, DateTime Fecha, int CantidadEntrega, bool CubrioTurno, 
+            String CubrioTurnoTipo, String CubrioTurnoRol)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Conexion.ConnectionString);
+                SqlCommand command = new SqlCommand();
+
+                command.CommandText = "sp_SetCapturaMovimiento";
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandTimeout = 60;
+                command.Connection = conn;
+                command.Parameters.Clear();
+                command.Parameters.Add(new SqlParameter("@Numero", SqlDbType.BigInt)).Value = Numero;
+                command.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.Date)).Value = Fecha;
+                command.Parameters.Add(new SqlParameter("@CantidadEntrega", SqlDbType.Int)).Value = CantidadEntrega;
+                command.Parameters.Add(new SqlParameter("@CubrioTurno", SqlDbType.Int)).Value = CubrioTurno;
+                command.Parameters.Add(new SqlParameter("@CubrioTurnoRol", SqlDbType.NVarChar)).Value = CubrioTurnoRol;
+                command.Parameters.Add(new SqlParameter("@CubrioTurnoTipo", SqlDbType.NVarChar)).Value = CubrioTurnoTipo;
+
+                conn.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                return false;
+            }
+            finally
+            {
+                command = null;
+                conn = null;
+            }
+            return true;
+        }
+
+        public DataTable ValidaFechaMovimiento(long Numero, DateTime Fecha)
+        {
+            DataTable dtInformacion = new DataTable();
+            try
+            {
+                conn = new SqlConnection(Conexion.ConnectionString);
+                command = new SqlCommand("sp_ValidaFechaMovimiento", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandTimeout = 60;
+                command.Parameters.Clear();
+                command.Parameters.Add(new SqlParameter("@Numero", SqlDbType.BigInt)).Value = Numero;
+                command.Parameters.Add(new SqlParameter("@Fecha", SqlDbType.Date)).Value = Fecha;
+                da = new SqlDataAdapter(command);
+                da.Fill(dtInformacion);
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
             finally
             {
                 if (conn.State == ConnectionState.Open)
                     conn.Close();
+                da = null;
                 command = null;
                 conn = null;
             }
-            return true;
+            return dtInformacion;
         }
     }
 }

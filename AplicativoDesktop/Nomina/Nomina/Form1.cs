@@ -25,7 +25,7 @@ namespace Nomina
         private void btnBuscar_Click(object sender, EventArgs e)
         {
 
-            Buscar(txtNumero.Text.Trim());
+            Buscar(long.Parse(txtNumero.Text.Trim()));
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -49,10 +49,10 @@ namespace Nomina
             else if (rbtnAuxiliar.Checked)
                 rol = rbtnAuxiliar.Text;
 
-            if (rbtnChofer.Checked)
-                tipo = rbtnChofer.Text;
-            else if (rbtnCargador.Checked)
-                tipo = rbtnCargador.Text;
+            if (rbtnInterno.Checked)
+                tipo = rbtnInterno.Text;
+            else if (rbtnExterno.Checked)
+                tipo = rbtnExterno.Text;
 
             if (pMovimiento.Visible)
             {
@@ -62,9 +62,9 @@ namespace Nomina
                     movimiento = rbtnEliminar.Text;
             }
             else
-                movimiento = "NUEVO";
+                movimiento = "Nuevo";
 
-            empleados = new Empleados(txtNumero.Text, txtNombre.Text, "Cargador", "Interno", movimiento);
+            empleados = new Empleados(long.Parse(txtNumero.Text), txtNombre.Text, rol, tipo, movimiento);
 
             if (!negocio.GuardarEmpleado(empleados))
             {
@@ -82,17 +82,18 @@ namespace Nomina
         {
             LimpiarPanelEmpleado();
         }
-        void Buscar(string numero)
+        void Buscar(long numero)
         {
             Capa.Negocio.NominaEmpleados negocio = new Capa.Negocio.NominaEmpleados();
             Capa.Negocio.Empleados empleados = null;
+            string msj = string.Empty;
 
-            if (negocio.Buscar(numero, out empleados))
+            if (negocio.Buscar(numero, out empleados, out msj))
             {
                 txtNombre.Enabled = false;
                 pMovimiento.Visible = false;
                 txtNumero.Enabled = true;
-                txtNumero.Text = empleados.Numero;
+                txtNumero.Text = empleados.Numero.ToString();
                 txtNombre.Text = empleados.Nombre;
 
                 if (empleados.Rol == rbtnChofer.Text)
@@ -100,30 +101,46 @@ namespace Nomina
                 else if (empleados.Rol == rbtnCargador.Text)
                     rbtnCargador.Checked = true;
                 else if (empleados.Rol == rbtnAuxiliar.Text)
-                    rbtnCargador.Checked = true;
+                    rbtnAuxiliar.Checked = true;
 
                 if (empleados.Tipo == rbtnInterno.Text)
                     rbtnInterno.Checked = true;
                 else if (empleados.Tipo == rbtnExterno.Text)
                     rbtnExterno.Checked = true;
+
+                pMovimiento.Visible = true;
             }
             else
             {
-                txtNumero.Enabled = true;
-                pMovimiento.Visible = false;
+                if (String.IsNullOrEmpty(msj))
+                {
+                    DialogResult dialogResult = MessageBox.Show("Número de empleado no existe, desea registralo", "Nomina", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dialogResult == DialogResult.No)
+                    {
+                        return;
+                    }
+                    txtNombre.Focus();
+                }
+                else
+                {
+                    MessageBox.Show(msj, "Nomina", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    return;
+                }
+                //txtNumero.Enabled = false;
+                pMovimiento.Visible = true;
             }
+            txtNumero.Enabled = false;
             txtNombre.Enabled = true;
             rbtnChofer.Enabled = true;
             rbtnCargador.Enabled = true;
             rbtnAuxiliar.Enabled = true;
             rbtnInterno.Enabled = true;
             rbtnExterno.Enabled = true;
-            pMovimiento.Visible = true;
             btnGuardar.Enabled = true;
             btnCancelar.Enabled = true;
             btnBuscar.Enabled = false;
         }
-        void BuscarCaptura(string numero)
+        void BuscarCaptura(long numero)
         {
             if (txtNumeroC.Text.Trim() == "")
             {
@@ -133,11 +150,12 @@ namespace Nomina
 
             Capa.Negocio.NominaEmpleados negocio = new Capa.Negocio.NominaEmpleados();
             Capa.Negocio.Empleados empleado = null;
+            string msj = string.Empty;
 
-            if (negocio.Buscar(numero, out empleado))
+            if (negocio.Buscar(numero, out empleado, out msj))
             {
                 txtNumeroC.Enabled = true;
-                txtNumeroC.Text = empleado.Numero;
+                txtNumeroC.Text = empleado.Numero.ToString();
                 txtNombreC.Text = empleado.Nombre;
                 txtRolC.Text = empleado.Rol;
                 txtTipoC.Text = empleado.Tipo;
@@ -153,8 +171,17 @@ namespace Nomina
             }
             else
             {
-                MessageBox.Show("No existe el numero de empleado", "Nomina", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (String.IsNullOrEmpty(msj))
+                {
+                    MessageBox.Show("Número de empleado no existe", "Nomina", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(msj, "Nomina", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    return;
+                }
+
             }
             txtNombre.Enabled = true;
             rbtnChofer.Enabled = true;
@@ -175,28 +202,34 @@ namespace Nomina
             txtNombre.Enabled = false;
             rbtnChofer.Checked = false;
             rbtnCargador.Checked = false;
-            rbtnCargador.Checked = false;
+            rbtnAuxiliar.Checked = false;
             rbtnInterno.Checked = false;
             rbtnExterno.Checked = false;
             rbtnChofer.Enabled = false;
             rbtnCargador.Enabled = false;
-            rbtnCargador.Enabled = false;
+            rbtnAuxiliar.Enabled = false;
             rbtnInterno.Enabled = false;
             rbtnExterno.Enabled = false;
-            rbtnModificar.Enabled = false;
-            rbtnEliminar.Enabled = false;
+            //rbtnModificar.Enabled = false;
+            //rbtnEliminar.Enabled = false;
             pMovimiento.Visible = false;
             btnGuardar.Enabled = false;
             btnCancelar.Enabled = false;
             txtNumero.Focus();
             btnBuscar.Enabled = true;
+            
         }
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar.Equals((char)13))
             {
-                Buscar(txtNumero.Text.Trim());
+                Buscar(long.Parse(txtNumero.Text.Trim()));
                 e.Handled = true;
+            }
+            else if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+                return;
             }
         }
 
@@ -208,7 +241,7 @@ namespace Nomina
         private void btnBuscarC_Click(object sender, EventArgs e)
         {
 
-            BuscarCaptura(txtNumeroC.Text.Trim());
+            BuscarCaptura(long.Parse(txtNumero.Text.Trim()));
         }
 
         void LimpiarPanelCaptura()
@@ -257,15 +290,20 @@ namespace Nomina
                 tipo = rbtnCargadorC.Text;
 
 
-            capturaMovimiento = new CapturaMovimiento(txtNumeroC.Text, txtFechaC.Text,
+            capturaMovimiento = new CapturaMovimiento(long.Parse(txtNumeroC.Text), txtFechaC.Text,
                         string.IsNullOrEmpty(txtCantidadEntregaC.Text.Trim()) ? 0 : Convert.ToInt32(txtCantidadEntregaC.Text.Trim()),
                         cBoxCubrioTurnoC.Checked,
                         cBoxCubrioTurnoC.Checked ? tipo : "",
                         cBoxCubrioTurnoC.Checked ? rol : "");
+            
+            string msj = string.Empty;
 
-            if (!negocio.GuardarMovimiento(capturaMovimiento))
+            if (!negocio.GuardarMovimiento(capturaMovimiento, msj))
             {
+                if(string.IsNullOrEmpty(msj))
                 MessageBox.Show("Error al guardar la información", "Captura de movimiento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(msj, "Captura de movimiento", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
@@ -284,8 +322,13 @@ namespace Nomina
         {
             if (e.KeyChar.Equals((char)13))
             {
-                BuscarCaptura(txtNumero.Text.Trim());
+                BuscarCaptura(long.Parse(txtNumeroC.Text.Trim()));
                 e.Handled = true;
+            }
+            else if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+                return;
             }
         }
 
@@ -299,6 +342,11 @@ namespace Nomina
         }
 
         private void txtCantidadEntregaC_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNumeroC_TextChanged(object sender, EventArgs e)
         {
 
         }

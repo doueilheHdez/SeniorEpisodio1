@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nomina.Capa.Datos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -9,13 +10,13 @@ namespace Nomina.Capa.Negocio
 {
     public class CapturaMovimiento
     {
-        public string Numero { get; set; }
+        public long Numero { get; set; }
         public string Fecha { get; set; }
         public int CantidadEntrega { get; set; }
         public bool CubrioTurno { get; set; }
         public string CubrioTurnoTipo { get; set; }
         public string CubrioTurnoRol { get; set; }
-        public CapturaMovimiento(string numero, string fecha, int cantidadEntrega, bool cubrioTurno, string cubrioTurnoTipo, string cubrioTurnoRol)
+        public CapturaMovimiento(long numero, string fecha, int cantidadEntrega, bool cubrioTurno, string cubrioTurnoTipo, string cubrioTurnoRol)
         {
             this.Numero = numero;
             this.Fecha = fecha;
