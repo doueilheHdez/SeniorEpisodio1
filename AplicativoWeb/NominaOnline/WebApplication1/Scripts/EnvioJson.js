@@ -15,14 +15,5 @@
             alert("Intente Nuevamente");
             return null;
         }
-        //,
-        //beforeSend: function () {
-        //    //console.w("Intente send");
-        //    console.clear();
-        //},
-        //complete: function () {
-        //    //alert("Intente complete");
-        //    console.clear();
-        //}
     });
 }

@@ -4,7 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using WebApplication1.Capa.Datos;
-
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2020-10-08
+-- Descripcion:   Interfaz con los datos Empleados
+-- ID:                                                                               
+--******************************************************  
+*/
 namespace WebApplication1.Capa.Negocio
 {
     public class NominaEmpleados

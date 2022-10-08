@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2020-10-08
+-- Descripcion:   Clase de empleado
+-- ID:                                                                               
+--******************************************************  
+*/
 namespace WebApplication1.Capa.Negocio
 {
     public class Empleados

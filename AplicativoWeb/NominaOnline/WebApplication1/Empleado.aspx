@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <script src="Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="Scripts/EnvioJson.js?1.0003"></script>
-    <script src="Scripts/Empleado.js?1.0003"></script>
+    <script src="Scripts/Empleado.js?1.0005"></script>
 </head>
 <body>
     <form id="form1" runat="server">
+
         <div class="container">
             <div class="form-group">
-                <h3 class="form-signin-heading" style="margin-top: 0px">Calculo de nomina
+                <h3 class="form-signin-heading" style="margin-top: 0px">Cálculo de nómina
                 </h3>
             </div>
         </div>
@@ -24,7 +25,7 @@
                 <label for="Título" class="control-label col-xs-12 col-sm-2">
                     Número de empleados</label>
                 <div class="col-xs-12 col-sm-3">
-                    <input type="text" id="txtNumero" class="form-control input-small" maxlength="20" tabindex="1" value="" />
+                    <input type="text" id="txtNumero" class="form-control input-small" maxlength="20" tabindex="1" value="" autofocus="autofocus" />
                 </div>
                 <div class="col-sm-2">
                     <button class="btn btn-default btn-md" type="button" id="btnBuscar" tabindex="2">
@@ -98,8 +99,7 @@
             </div>
         </div>
         <div class="container" >
-            <div class="form-group" style="display:none" id="divCalculo">
-                    
+            <div class="form-group" style="display:none" id="divCalculo">                    
             </div>
         </div>
         <div class="container">

@@ -6,6 +6,16 @@ using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2022-10-08
+-- Descripcion:   Conexion de base de datos
+-- ID:                                                                               
+--******************************************************  
+*/
+
 namespace Nomina.Capa.Datos
 {
     public class Conexion

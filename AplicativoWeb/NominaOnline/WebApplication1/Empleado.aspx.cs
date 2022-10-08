@@ -6,6 +6,16 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2020-10-08
+-- Descripcion:   Interfas para usuario
+-- ID:                                                                               
+--******************************************************  
+*/
+
 namespace WebApplication1
 {
     public partial class Empleado : System.Web.UI.Page
@@ -22,11 +32,11 @@ namespace WebApplication1
             return calculoNegocio.Buscar(long.Parse(numero));
         }
         [WebMethod]
-        public static string Calcular(string numero, string anio, string mes)
+        public static string CalculoSalario(string numero, string anio, string mes)
         {
             Capa.Negocio.CalculoNegocio calculoNegocio = new Capa.Negocio.CalculoNegocio();
 
-            return calculoNegocio.CalcularMes(long.Parse(numero), int.Parse(anio), int.Parse(mes));
+            return calculoNegocio.CalculoSalario(long.Parse(numero), int.Parse(anio), int.Parse(mes));
         }
     }
 }

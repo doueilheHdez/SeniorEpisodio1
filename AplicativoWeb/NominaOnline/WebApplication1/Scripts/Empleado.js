@@ -1,5 +1,4 @@
-﻿$("#txtNumero").focus();
-$(function () {
+﻿$(function () {
     $("#btnBuscar").on('click', function () {
         fnBuscar();
     });
@@ -54,8 +53,6 @@ function fnRespuestaBusq(objResponse) {
     }
 }
 
-
-
 function fnCalcular() {
     if (($("#txtNumero").val() == null || $("#txtNumero").val().trim() == ""))
         return false;
@@ -64,7 +61,7 @@ function fnCalcular() {
 
         var param = { numero: $("#txtNumero").val(), anio: $("#ddlAnio").val(), mes: $("#ddlMes").val() };
 
-        var URL = "Empleado.aspx/fnRespuestaCalculo";
+        var URL = "Empleado.aspx/CalculoSalario";
 
         EnvioInformacion(param, URL, fnRespuestaCalculo);
     }
@@ -76,48 +73,50 @@ function fnRespuestaCalculo(objResponse) {
             alert(objResponse.MjeAlerta);
         }
         else {
-            $("#btnCalcular").attr("disabled", true);
-            var _scriptHTML;
-            _scriptHTML = "<div style='width:80%'><div><h4 class='form-signin-heading'>Resumen</h4>  </div>";
+            var _scriptHTML ="<br />";
+            _scriptHTML += "<div style='width:80%'><div><h4 class='form-signin-heading'>Resumen</h4>  </div>";
             _scriptHTML += "<table id='table' class='table table-hover' width='100%'>";
             _scriptHTML += "<thead>";
             _scriptHTML += "<tr>";
             _scriptHTML += "<th style='width: 25%;'>Salario bruto</th>";
             _scriptHTML += "<th style='width: 25%;'>ISR</th>";
             _scriptHTML += "<th style='width: 25%;'>Salario neto</th>";
-            _scriptHTML += "<th style='width: 25%;'>Vales Despensa</th>";
+            _scriptHTML += "<th style='width: 25%;'>Vales</th>";
             _scriptHTML += "</tr>";
             _scriptHTML += "</thead>";
 
-            var contDetalle = 0;
-            for (var j = 0; j < rowsTabla.length; j++) {
-                contDetalle++;
+            for (var j = 0; j < objResponse.Calculo.length; j++) {
                 _scriptHTML += "<tr>";
-                _scriptHTML += "<td style='text-align: left;'>" + objResponse.Empleado[j].SalarioBruto + "</td>";
-                _scriptHTML += "<td style='text-align: left;'>" + rowsTabla[j].ISR + "</td>";
-                _scriptHTML += "<td style='text-align: left;'>" + rowsTabla[j].SalarioNeto + "</td>";
-                _scriptHTML += "<td style='text-align: left;'>" + rowsTabla[j].Vales + "</td>";
+                _scriptHTML += "<td style='text-align: left;'> $" + objResponse.Calculo[j].SalarioBruto + "</td>";
+                _scriptHTML += "<td style='text-align: left;'> $" + objResponse.Calculo[j].ISR + "</td>";
+                _scriptHTML += "<td style='text-align: left;'> $" + objResponse.Calculo[j].SalarioNeto + "</td>";
+                _scriptHTML += "<td style='text-align: left;'> $" + objResponse.Calculo[j].Vales + "</td>";
                 _scriptHTML += "</tr>";
             }
             _scriptHTML += "</table></div>";
 
-            document.getElementById('divCalculo').innerHTML = _scriptHTML;
+            $("#btnCalcular").attr("disabled", true);
+            $("#divCalculo").css("display", "block");
+            $("#divCalculo").html(_scriptHTML);
+            $("#ddlAnio").attr("disabled", true);
+            $("#ddlMes").attr("disabled", true);
         }
     }
 }
 
-    function fnLimpiar() {
-        $('#txtNumero').val("");
-        $('#txtNombre').val("");
-        $('#txtRol').val("");
-        $('#txtTipo').val("");
-        $("#txtNumero").attr("disabled", false);
-        $("#btnBuscar").attr("disabled", false);
-        $("#btnCalcular").attr("disabled", true);
-        $("#btnCancelar").attr("disabled", true);
-        $("#ddlAnio").attr("disabled", true);
-        $("#ddlMes").attr("disabled", true);
-        $("#ddlMes").val(10);
-        $('#txtNumero').focus();
-        document.getElementById('divCalculo').innerHTML = "";
-    }
+function fnLimpiar() {
+    $('#txtNumero').val("");
+    $('#txtNombre').val("");
+    $('#txtRol').val("");
+    $('#txtTipo').val("");
+    $("#txtNumero").attr("disabled", false);
+    $("#btnBuscar").attr("disabled", false);
+    $("#btnCalcular").attr("disabled", true);
+    $("#btnCancelar").attr("disabled", true);
+    $("#ddlAnio").attr("disabled", true);
+    $("#ddlMes").attr("disabled", true);
+    $("#ddlMes").val(10);
+    $('#txtNumero').focus();
+    $("#divCalculo").css("display", "none");
+    $("#divCalculo").html("");
+}

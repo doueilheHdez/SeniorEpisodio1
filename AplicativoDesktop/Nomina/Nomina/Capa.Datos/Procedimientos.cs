@@ -7,6 +7,15 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Runtime.CompilerServices;
 
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2020-10-08
+-- Descripcion:   Consulta, registro y  actualizacion a base de datos
+-- ID:                                                                               
+--******************************************************  
+*/
 namespace Nomina.Capa.Datos
 {
     internal class Procedimientos

@@ -518,6 +518,7 @@
             this.cBoxCubrioTurnoC.TabIndex = 13;
             this.cBoxCubrioTurnoC.Text = "Cubrio turno";
             this.cBoxCubrioTurnoC.UseVisualStyleBackColor = true;
+            this.cBoxCubrioTurnoC.CheckedChanged += new System.EventHandler(this.cBoxCubrioTurnoC_CheckedChanged);
             // 
             // label11
             // 

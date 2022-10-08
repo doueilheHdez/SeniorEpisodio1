@@ -6,6 +6,15 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2020-10-08
+-- Descripcion:   Interfaz con los datos de captura
+-- ID:                                                                               
+--******************************************************  
+*/
 namespace Nomina.Capa.Negocio
 {
     public class CapturaMovimiento

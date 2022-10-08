@@ -7,6 +7,16 @@ using System.Xml.Linq;
 using System.Data;
 using System.Text;
 
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2020-10-08
+-- Descripcion:   Interfaz de con los datos
+-- ID:                                                                               
+--******************************************************  
+*/
+
 namespace WebApplication1.Capa.Negocio
 {
     public class CalculoNegocio
@@ -43,7 +53,7 @@ namespace WebApplication1.Capa.Negocio
             return JoResponse.ToString();
         }
 
-        public string CalcularMes(long numero, int anio, int mes)
+        public string CalculoSalario(long numero, int anio, int mes)
         {
             JObject JoResponse = new JObject();
 
@@ -53,7 +63,7 @@ namespace WebApplication1.Capa.Negocio
 
                 DateTime sFechaIni = Convert.ToDateTime(anio + "-" + mes + "-01");
                 DateTime sFechaFin = sFechaIni.AddMonths(1);
-                DataTable dtInfomacion = procedimientos.GetCalcularSuelto(numero, sFechaIni, sFechaFin);
+                DataTable dtInfomacion = procedimientos.CalculoSalario(numero, sFechaIni, sFechaFin);
 
                 if (dtInfomacion.Rows.Count == 0)
                 {
@@ -77,6 +87,7 @@ namespace WebApplication1.Capa.Negocio
             return JoResponse.ToString();
         }
 
+        //Inicio convertir un datatable array   para  JSON object.
         public static JProperty Listado(DataTable dtResult, string Nombre)
         {
             JArray JaResponse = new JArray();
@@ -111,5 +122,6 @@ namespace WebApplication1.Capa.Negocio
                     return "";
             }
         }
+        //Fin convertir un datatable array   para  JSON object.
     }
 }

@@ -5,6 +5,15 @@ using System.Linq;
 using System.Web;
 using System.Data;
 
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2020-10-08
+-- Descripcion:   Consulta, registro y  actualizacion a base de datos
+-- ID:                                                                               
+--******************************************************  
+*/
 namespace WebApplication1.Capa.Datos
 {
     public class Procedimientos
@@ -41,13 +50,13 @@ namespace WebApplication1.Capa.Datos
             }
             return dtInformacion;
         }
-        public DataTable GetCalcularSuelto(long Numero, DateTime fechaInicio, DateTime fechaFinal)
+        public DataTable CalculoSalario(long Numero, DateTime fechaInicio, DateTime fechaFinal)
         {
             DataTable dtInformacion = new DataTable();
             try
             {
                 conn = new SqlConnection(Conexion.ConnectionString);
-                command = new SqlCommand("sp_GetEmpleados", conn);
+                command = new SqlCommand("sp_CalculoSalario", conn);
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandTimeout = 60;
                 command.Parameters.Clear();

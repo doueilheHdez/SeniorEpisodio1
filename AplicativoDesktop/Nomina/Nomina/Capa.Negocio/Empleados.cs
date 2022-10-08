@@ -4,6 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+--******************************************************                                                       
+-- Proyecto:      Nomina
+-- Responsable:   Daniel Oueilhe  
+-- Fecha:         2020-10-08
+-- Descripcion:   Clase de empleado
+-- ID:                                                                               
+--******************************************************  
+*/
 namespace Nomina.Capa.Negocio
 {
     public class Empleados
