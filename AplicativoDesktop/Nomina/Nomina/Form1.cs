@@ -64,6 +64,18 @@ namespace Nomina
             else
                 movimiento = "Nuevo";
 
+            if (rol == "")
+            {
+                MessageBox.Show("Seleccion el rol", "Nomina", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (tipo == "")
+            {
+                MessageBox.Show("Seleccion el tipo", "Nomina", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             empleados = new Empleados(long.Parse(txtNumero.Text), txtNombre.Text, rol, tipo, movimiento);
 
             if (!negocio.GuardarEmpleado(empleados))
@@ -164,8 +176,10 @@ namespace Nomina
                 txtFechaC.Enabled = true;
                 txtCantidadEntregaC.Enabled = true;
                 cBoxCubrioTurnoC.Enabled = true;
-                rbtnCubrioInternoC.Enabled = true;
-                rbtnCubrioExternoC.Enabled = true;
+                rbtnChoferC.Enabled = true;
+                rbtnCargadorC.Enabled = true;
+                rbtnChoferC.Checked = false;
+                rbtnCargadorC.Checked = false;
                 rbtnCubrioInternoC.Checked = false;
                 rbtnCubrioExternoC.Checked = false;
             }
@@ -190,9 +204,9 @@ namespace Nomina
             rbtnInterno.Enabled = true;
             rbtnExterno.Enabled = true;
             pMovimiento.Visible = true;
-            btnGuardar.Enabled = true;
-            btnCancelar.Enabled = true;
-            btnBuscar.Enabled = false;
+            btnGuardarC.Enabled = true;
+            btnCancelarC.Enabled = true;
+            btnBuscarC.Enabled = false;
         }
         void LimpiarPanelEmpleado()
         {

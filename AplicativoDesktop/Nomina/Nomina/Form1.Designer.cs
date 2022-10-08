@@ -55,6 +55,15 @@
             this.btnCancelarC = new System.Windows.Forms.Button();
             this.btnGuardarC = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.txtCantidadEntregaC = new System.Windows.Forms.MaskedTextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.rbtnCubrioExternoC = new System.Windows.Forms.RadioButton();
+            this.rbtnCubrioInternoC = new System.Windows.Forms.RadioButton();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.rbtnCargadorC = new System.Windows.Forms.RadioButton();
+            this.rbtnChoferC = new System.Windows.Forms.RadioButton();
+            this.label14 = new System.Windows.Forms.Label();
             this.cBoxCubrioTurnoC = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,17 +76,7 @@
             this.txtNumeroC = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.rbtnCargadorC = new System.Windows.Forms.RadioButton();
-            this.rbtnChoferC = new System.Windows.Forms.RadioButton();
-            this.label14 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.rbtnCubrioExternoC = new System.Windows.Forms.RadioButton();
-            this.rbtnCubrioInternoC = new System.Windows.Forms.RadioButton();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtFechaC = new System.Windows.Forms.MaskedTextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtCantidadEntregaC = new System.Windows.Forms.MaskedTextBox();
+            this.txtFechaC = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -86,8 +85,8 @@
             this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -388,11 +387,10 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.txtCantidadEntregaC);
             this.panel4.Controls.Add(this.txtFechaC);
+            this.panel4.Controls.Add(this.txtCantidadEntregaC);
             this.panel4.Controls.Add(this.panel6);
             this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.cBoxCubrioTurnoC);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.label6);
@@ -411,12 +409,110 @@
             this.panel4.Size = new System.Drawing.Size(484, 287);
             this.panel4.TabIndex = 9;
             // 
+            // txtCantidadEntregaC
+            // 
+            this.txtCantidadEntregaC.Enabled = false;
+            this.txtCantidadEntregaC.Location = new System.Drawing.Point(373, 121);
+            this.txtCantidadEntregaC.Mask = "99";
+            this.txtCantidadEntregaC.Name = "txtCantidadEntregaC";
+            this.txtCantidadEntregaC.Size = new System.Drawing.Size(39, 22);
+            this.txtCantidadEntregaC.TabIndex = 21;
+            this.txtCantidadEntregaC.ValidatingType = typeof(int);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.rbtnCubrioExternoC);
+            this.panel6.Controls.Add(this.rbtnCubrioInternoC);
+            this.panel6.Controls.Add(this.label12);
+            this.panel6.Location = new System.Drawing.Point(254, 188);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(158, 69);
+            this.panel6.TabIndex = 19;
+            // 
+            // rbtnCubrioExternoC
+            // 
+            this.rbtnCubrioExternoC.AutoSize = true;
+            this.rbtnCubrioExternoC.Enabled = false;
+            this.rbtnCubrioExternoC.Location = new System.Drawing.Point(56, 37);
+            this.rbtnCubrioExternoC.Name = "rbtnCubrioExternoC";
+            this.rbtnCubrioExternoC.Size = new System.Drawing.Size(70, 20);
+            this.rbtnCubrioExternoC.TabIndex = 3;
+            this.rbtnCubrioExternoC.TabStop = true;
+            this.rbtnCubrioExternoC.Text = "Externo";
+            this.rbtnCubrioExternoC.UseVisualStyleBackColor = true;
+            // 
+            // rbtnCubrioInternoC
+            // 
+            this.rbtnCubrioInternoC.AutoSize = true;
+            this.rbtnCubrioInternoC.Enabled = false;
+            this.rbtnCubrioInternoC.Location = new System.Drawing.Point(56, 14);
+            this.rbtnCubrioInternoC.Name = "rbtnCubrioInternoC";
+            this.rbtnCubrioInternoC.Size = new System.Drawing.Size(65, 20);
+            this.rbtnCubrioInternoC.TabIndex = 2;
+            this.rbtnCubrioInternoC.TabStop = true;
+            this.rbtnCubrioInternoC.Text = "Interno";
+            this.rbtnCubrioInternoC.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(3, 14);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(43, 16);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Tipo:";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.rbtnCargadorC);
+            this.panel5.Controls.Add(this.rbtnChoferC);
+            this.panel5.Controls.Add(this.label14);
+            this.panel5.Location = new System.Drawing.Point(39, 188);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(158, 69);
+            this.panel5.TabIndex = 18;
+            // 
+            // rbtnCargadorC
+            // 
+            this.rbtnCargadorC.AutoSize = true;
+            this.rbtnCargadorC.Enabled = false;
+            this.rbtnCargadorC.Location = new System.Drawing.Point(63, 37);
+            this.rbtnCargadorC.Name = "rbtnCargadorC";
+            this.rbtnCargadorC.Size = new System.Drawing.Size(82, 20);
+            this.rbtnCargadorC.TabIndex = 2;
+            this.rbtnCargadorC.TabStop = true;
+            this.rbtnCargadorC.Text = "Cargador";
+            this.rbtnCargadorC.UseVisualStyleBackColor = true;
+            // 
+            // rbtnChoferC
+            // 
+            this.rbtnChoferC.AutoSize = true;
+            this.rbtnChoferC.Enabled = false;
+            this.rbtnChoferC.Location = new System.Drawing.Point(63, 14);
+            this.rbtnChoferC.Name = "rbtnChoferC";
+            this.rbtnChoferC.Size = new System.Drawing.Size(64, 20);
+            this.rbtnChoferC.TabIndex = 1;
+            this.rbtnChoferC.TabStop = true;
+            this.rbtnChoferC.Text = "Chofer";
+            this.rbtnChoferC.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(18, 14);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(35, 16);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Rol:";
+            // 
             // cBoxCubrioTurnoC
             // 
             this.cBoxCubrioTurnoC.AutoSize = true;
             this.cBoxCubrioTurnoC.Enabled = false;
             this.cBoxCubrioTurnoC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBoxCubrioTurnoC.Location = new System.Drawing.Point(39, 171);
+            this.cBoxCubrioTurnoC.Location = new System.Drawing.Point(39, 162);
             this.cBoxCubrioTurnoC.Name = "cBoxCubrioTurnoC";
             this.cBoxCubrioTurnoC.Size = new System.Drawing.Size(109, 20);
             this.cBoxCubrioTurnoC.TabIndex = 13;
@@ -527,121 +623,15 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Número:";
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.rbtnCargadorC);
-            this.panel5.Controls.Add(this.rbtnChoferC);
-            this.panel5.Controls.Add(this.label14);
-            this.panel5.Location = new System.Drawing.Point(39, 197);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(158, 69);
-            this.panel5.TabIndex = 18;
-            // 
-            // rbtnCargadorC
-            // 
-            this.rbtnCargadorC.AutoSize = true;
-            this.rbtnCargadorC.Enabled = false;
-            this.rbtnCargadorC.Location = new System.Drawing.Point(63, 37);
-            this.rbtnCargadorC.Name = "rbtnCargadorC";
-            this.rbtnCargadorC.Size = new System.Drawing.Size(82, 20);
-            this.rbtnCargadorC.TabIndex = 2;
-            this.rbtnCargadorC.TabStop = true;
-            this.rbtnCargadorC.Text = "Cargador";
-            this.rbtnCargadorC.UseVisualStyleBackColor = true;
-            // 
-            // rbtnChoferC
-            // 
-            this.rbtnChoferC.AutoSize = true;
-            this.rbtnChoferC.Enabled = false;
-            this.rbtnChoferC.Location = new System.Drawing.Point(63, 14);
-            this.rbtnChoferC.Name = "rbtnChoferC";
-            this.rbtnChoferC.Size = new System.Drawing.Size(64, 20);
-            this.rbtnChoferC.TabIndex = 1;
-            this.rbtnChoferC.TabStop = true;
-            this.rbtnChoferC.Text = "Chofer";
-            this.rbtnChoferC.UseVisualStyleBackColor = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(18, 14);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 16);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Rol:";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.rbtnCubrioExternoC);
-            this.panel6.Controls.Add(this.rbtnCubrioInternoC);
-            this.panel6.Controls.Add(this.label12);
-            this.panel6.Location = new System.Drawing.Point(254, 197);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(158, 69);
-            this.panel6.TabIndex = 19;
-            // 
-            // rbtnCubrioExternoC
-            // 
-            this.rbtnCubrioExternoC.AutoSize = true;
-            this.rbtnCubrioExternoC.Enabled = false;
-            this.rbtnCubrioExternoC.Location = new System.Drawing.Point(56, 37);
-            this.rbtnCubrioExternoC.Name = "rbtnCubrioExternoC";
-            this.rbtnCubrioExternoC.Size = new System.Drawing.Size(70, 20);
-            this.rbtnCubrioExternoC.TabIndex = 3;
-            this.rbtnCubrioExternoC.TabStop = true;
-            this.rbtnCubrioExternoC.Text = "Externo";
-            this.rbtnCubrioExternoC.UseVisualStyleBackColor = true;
-            // 
-            // rbtnCubrioInternoC
-            // 
-            this.rbtnCubrioInternoC.AutoSize = true;
-            this.rbtnCubrioInternoC.Enabled = false;
-            this.rbtnCubrioInternoC.Location = new System.Drawing.Point(56, 14);
-            this.rbtnCubrioInternoC.Name = "rbtnCubrioInternoC";
-            this.rbtnCubrioInternoC.Size = new System.Drawing.Size(65, 20);
-            this.rbtnCubrioInternoC.TabIndex = 2;
-            this.rbtnCubrioInternoC.TabStop = true;
-            this.rbtnCubrioInternoC.Text = "Interno";
-            this.rbtnCubrioInternoC.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(3, 14);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(43, 16);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Tipo:";
-            // 
             // txtFechaC
             // 
-            this.txtFechaC.Location = new System.Drawing.Point(102, 124);
-            this.txtFechaC.Mask = "00/00/0000";
+            this.txtFechaC.CustomFormat = "dd/MM/yyyy";
+            this.txtFechaC.Enabled = false;
+            this.txtFechaC.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtFechaC.Location = new System.Drawing.Point(102, 122);
             this.txtFechaC.Name = "txtFechaC";
-            this.txtFechaC.Size = new System.Drawing.Size(100, 22);
-            this.txtFechaC.TabIndex = 20;
-            this.txtFechaC.ValidatingType = typeof(System.DateTime);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(99, 146);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "dd/mm/aaaa";
-            // 
-            // txtCantidadEntregaC
-            // 
-            this.txtCantidadEntregaC.Location = new System.Drawing.Point(373, 121);
-            this.txtCantidadEntregaC.Mask = "99";
-            this.txtCantidadEntregaC.Name = "txtCantidadEntregaC";
-            this.txtCantidadEntregaC.Size = new System.Drawing.Size(39, 22);
-            this.txtCantidadEntregaC.TabIndex = 21;
-            this.txtCantidadEntregaC.ValidatingType = typeof(int);
+            this.txtFechaC.Size = new System.Drawing.Size(112, 22);
+            this.txtFechaC.TabIndex = 22;
             // 
             // Form1
             // 
@@ -667,10 +657,10 @@
             this.tabPage2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -724,9 +714,8 @@
         private System.Windows.Forms.RadioButton rbtnCargadorC;
         private System.Windows.Forms.RadioButton rbtnChoferC;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.MaskedTextBox txtFechaC;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.MaskedTextBox txtCantidadEntregaC;
+        private System.Windows.Forms.DateTimePicker txtFechaC;
     }
 }
 
